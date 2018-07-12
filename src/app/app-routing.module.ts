@@ -7,6 +7,7 @@ import { UserComponent } from './users/user/user.component';
 import { ServersComponent } from './servers/servers.component';
 import { ServerComponent } from './servers/server/server.component';
 import {EditServerComponent} from './servers/edit-server/edit-server.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,7 +17,9 @@ const appRoutes: Routes = [
   { path: 'servers', component: ServersComponent, children: [
     {path: ':id', component: ServerComponent},
     {path: ':id/edit', component: EditServerComponent}
-  ] }
+  ] },
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/not-found'} // redirects unknown routes to not-found route. CAUTION: This always has to be the last route else you will always be redirected to not-found route.
 ];
 
 @NgModule({
